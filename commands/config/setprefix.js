@@ -14,6 +14,7 @@ module.exports = class extends Command {
     async run (message, args, data) {
         const prefix = args[0];
         if (!prefix) return message.error("config/setprefix:MISSING");
+         if(prefix.length > 5) message.error("config/setprefix:TOOLONG");
         await data.guild.setPrefix(prefix);
         message.success("config/setprefix:SUCCESS");
     }
